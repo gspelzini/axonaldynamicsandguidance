@@ -1,0 +1,16 @@
+import pandas as pd
+from scipy.stats import ks_2samp
+
+df = pd.read_excel("PruebasKSControlUPA.xlsx")
+
+# Quitar espacios y reemplazar espacios internos por guiones bajos
+df.columns = df.columns.str.strip().str.replace(" ", "_")
+
+print(df.columns.tolist())
+
+Control = pd.to_numeric(df["Control"], errors="coerce").dropna()
+UPA = pd.to_numeric(df["UPA"], errors="coerce").dropna()
+
+D, p = ks_2samp(Control, UPA)
+
+print(f"K–S D = {D:.3f}, p = {p:.8f}")
