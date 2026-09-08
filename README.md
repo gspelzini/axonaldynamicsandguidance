@@ -1,2 +1,69 @@
-# axonaldynamicsandguidance
-Computational tool for quantifying and visualizing axonal guidance, growth, and dynamics from experimentally derived data.
+# Public analysis examples
+
+This repository contains English-language examples for running the analyses reported in the paper. Example datasets are synthetic and must not be interpreted as experimental observations or scientific results.
+
+## Kolmogorov-Smirnov analysis of deviated angles
+
+Repository structure:
+
+```text
+axonaldynamicsandguidance/
+├── README.md
+├── requirements.txt
+├── ks_deviated_angles_analysis.ipynb
+├── data/
+│   └── example_synthetic_deviated_angles.xlsx
+```
+
+The Excel workbook contains synthetic deviated angles in degrees, with one condition per column. The notebook automatically locates it when launched from the repository root or when the Excel file is placed directly beside the notebook. When loaded, it prints the complete resolved path and the condition names found in the workbook.
+
+## Installation and execution
+
+Python 3.10 or later is recommended.
+
+```bash
+git clone https://github.com/gspelzini/axonaldynamicsandguidance.git
+cd axonaldynamicsandguidance
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+jupyter lab ks_deviated_angles_analysis.ipynb
+```
+
+On Windows, activate the environment with `.venv\Scripts\activate` instead.
+
+The example is deliberately constructed to show both possible outcomes at `alpha = 0.05`: CONTROL differs significantly from TREATMENT_W, TREATMENT_X, and TREATMENT_Y, whereas CONTROL and TREATMENT_Z do not differ significantly. These outcomes are properties of the synthetic teaching example only.
+
+### Select the conditions to compare
+
+Open the notebook and edit `COMPARISONS` in the configuration cell. Each entry contains two Excel column names:
+
+```python
+COMPARISONS = [
+    ("CONTROL", "TREATMENT_W"),
+    ("CONTROL", "TREATMENT_Z"),
+]
+```
+
+To compare other conditions, replace or add pairs. For example:
+
+```python
+COMPARISONS = [
+    ("TREATMENT_W", "TREATMENT_X"),
+    ("TREATMENT_Y", "TREATMENT_Z"),
+]
+```
+
+Names must match the Excel headers exactly. The notebook checks for missing names, removes blank cells independently from each column, reports both sample sizes, and then runs `scipy.stats.ks_2samp` with a two-sided alternative.
+
+### Use another workbook
+
+The simplest option is to place the new workbook in `data/` and change `DATA_FILENAME` in the notebook:
+
+```python
+DATA_FILENAME = "my_deviated_angles.xlsx"
+```
+
+If the worksheet has another name, also change `SHEET_NAME`. Keep one condition per column and store one deviated-angle observation per cell. Extra blank cells are allowed when sample sizes differ.
+
+If many pairwise hypotheses are tested, define the comparisons in advance and consider an appropriate multiple-testing correction. The notebook reports the unadjusted two-sample KS p-values, matching the simple pairwise procedure used in the original analysis.
