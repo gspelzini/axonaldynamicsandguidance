@@ -15,7 +15,7 @@ axonaldynamicsandguidance/
 │   └── example_synthetic_deviated_angles.xlsx
 ```
 
-The Excel workbook contains synthetic deviated angles in degrees, with one condition per column. The notebook automatically locates it when launched from the repository root or when the Excel file is placed directly beside the notebook. When loaded, it prints the complete resolved path and the condition names found in the workbook.
+The Excel workbook contains synthetic deviated angles in degrees, with one condition per column. The notebook automatically locates it when launched from the repository root, from the `notebooks` directory, or when the Excel file is placed directly beside the notebook. When loaded, it prints the complete resolved path and the condition names found in the workbook.
 
 ## Installation and execution
 
@@ -67,3 +67,15 @@ DATA_FILENAME = "my_deviated_angles.xlsx"
 If the worksheet has another name, also change `SHEET_NAME`. Keep one condition per column and store one deviated-angle observation per cell. Extra blank cells are allowed when sample sizes differ.
 
 If many pairwise hypotheses are tested, define the comparisons in advance and consider an appropriate multiple-testing correction. The notebook reports the unadjusted two-sample KS p-values, matching the simple pairwise procedure used in the original analysis.
+
+## Wind-rose plots
+
+`wind_rose_synthetic_angles.ipynb` reads the same synthetic deviated-angle workbook and generates one polar histogram per selected condition. It preserves the original 10-degree bins from -90 to 180 degrees, places 0 degrees at the top, and increases angles clockwise.
+
+Select the conditions in the configuration cell:
+
+```python
+CONDITIONS = ["CONTROL", "TREATMENT_W", "TREATMENT_Z"]
+```
+
+Running the notebook saves a 300-dpi PNG and TIFF for every selected condition in `outputs/wind_rose/`.
