@@ -79,3 +79,39 @@ CONDITIONS = ["CONTROL", "TREATMENT_W", "TREATMENT_Z"]
 ```
 
 Running the notebook saves a 300-dpi PNG and TIFF for every selected condition in `outputs/wind_rose/`.
+
+## Initial-angle and velocity plots
+
+`initial_angle_velocity_analysis.ipynb` reads
+`data/example_synthetic_initial_angle_velocity.xlsx` and generates one
+semicircular polar scatter plot per selected condition. Initial angle is shown
+from 0 to 180 degrees, while radial position and point colour both represent
+velocity in µm/min. All plots use the same 0–0.9 µm/min scale so conditions can
+be compared visually.
+
+The example workbook is in long format, with one paired observation per row:
+
+- `Observation ID`
+- `Condition`
+- `Initial angle (degrees)`
+- `Velocity (µm/min)`
+
+The included conditions are `CONTROL`, `TREATMENT_W`, `TREATMENT_X`,
+`TREATMENT_Y`, and `TREATMENT_Z`. They are entirely synthetic and their
+differences are illustrative, not results from the paper.
+
+Select which conditions to plot in the configuration cell:
+
+```python
+CONDITIONS = [
+    "CONTROL",
+    "TREATMENT_W",
+    "TREATMENT_X",
+    "TREATMENT_Y",
+    "TREATMENT_Z",
+]
+```
+
+To use another workbook, place it in `data/`, change `DATA_FILENAME`, and keep
+the four column names listed above. Running the notebook saves one 300-dpi PNG
+per selected condition in `outputs/initial_angle_velocity/`.
