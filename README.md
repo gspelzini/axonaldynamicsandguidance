@@ -1,5 +1,16 @@
 # Public analysis examples
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22711392.svg)](https://doi.org/10.5281/zenodo.22711392)
+
+## Citation
+
+The archived version of this repository is available from Zenodo:
+
+> Spelzini, G. N. (2026). *Analysis and plotting workflows for axonal dynamics and guidance* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22711392
+
+Please use the citation information in `CITATION.cff` when citing the software.
+
+
 This repository contains English-language examples for running the analyses reported in the paper. Example datasets are synthetic and must not be interpreted as experimental observations or scientific results.
 
 ## Kolmogorov-Smirnov analysis of deviated angles
