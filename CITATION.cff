@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use these analysis and plotting workflows, please cite this software using the metadata below."
+title: "Analysis and plotting workflows for axonal dynamics and guidance"
+type: software
+authors:
+  - family-names: Spelzini
+    given-names: "Gonzalo Nicolás"
+    orcid: "https://orcid.org/0000-0002-7084-4765"
+    affiliation: "National Scientific and Technical Research Council–University of Buenos Aires, Institute of Cellular Biology and Neuroscience 'Prof. E. De Robertis' (IBCN), Buenos Aires, Argentina; University of Buenos Aires, Faculty of Medicine, Department of Histology, Embryology, Molecular Biology and Genetics, Buenos Aires, Argentina"
+repository-code: "https://github.com/gspelzini/axonaldynamicsandguidance"
+license: MIT
+keywords:
+  - axon guidance
+  - axonal dynamics
+  - retinal ganglion cells
+  - reproducible analysis
+  - scientific visualization
+abstract: >-
+  Documented Python notebooks and synthetic example datasets for testing
+  statistical analyses and figure-generation workflows related to axonal
+  dynamics and guidance. The synthetic datasets are provided exclusively for
+  demonstration and do not represent experimental observations or results.
